@@ -1,5 +1,12 @@
 // [TODO:] define the necessary Querry and Mutation types:
 
+const { gql } = require('apollo-server-express');
+
+const typeDefs = gql`
+
+`;
+
+
 /*
 `Query` type:
 
