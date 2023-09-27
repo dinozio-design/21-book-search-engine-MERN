@@ -44,13 +44,13 @@ input userInput {
     _id: ID!
     username: String!
     email: String!
-  }
+}
 
 type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     saveBook(bookMark: bookInput!, user: userInput!): User
-
+    removeBook(bookId: String!, userId: ID!): User
 }
 `;
 
