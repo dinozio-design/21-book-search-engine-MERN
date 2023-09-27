@@ -48,7 +48,26 @@ const resolvers = {
             const token = signToken(user);
             return { token, user };
         },
-        saveBook: async (parent, { bookMark, user }) => {
+        saveBook: async (parent, { bookMark, user }, context) => {
+            // using conexts here. If context has a `user` property, that means the user executing this mutation has a valid JWT and is logged in
+            try {
+                if (context.user) {
+                    return User.findOneAndUpdate(
+                        { _id: userId },
+                        {
+                            $addToSet: { savedBooks: bookMark },
+                        },
+                        {
+                            new: true,
+                            runValidators: true,
+                        }
+                    );
+                };
+                //if user is not logged in it throws and error
+                throw new AuthenticationError('You need to be logged in!');
+            } catch (err) {
+                console.error(err);
+            }
 
         },
         removeBook: async (parent, { bookId, userId }) => {
