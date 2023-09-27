@@ -33,6 +33,7 @@ type Query {
 }
 `;
 
+module.exports = typeDefs;
 
 /*
 * `Query` type:
