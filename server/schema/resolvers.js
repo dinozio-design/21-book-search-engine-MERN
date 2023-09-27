@@ -2,7 +2,7 @@
 // use functionality in the user-controller.js as a guide
 
 // importing user model
-const {User} = require('../models');
+const {User, Book} = require('../models');
 
 // imporing sign token function from auth
 const {signToken} = require('../utils/auth');
@@ -12,7 +12,7 @@ const resolvers = {
     Query: {
         //get all documents from "me" collection from typeDefs
         me: async()=>{
-            return await User.find({});
+            return (await User.find({})).populate('savedBooks');
         }
     }
 };
