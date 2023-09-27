@@ -53,7 +53,7 @@ const resolvers = {
             try {
                 if (context.user) {
                     return User.findOneAndUpdate(
-                        { _id: userId },
+                        { _id: context.user._id },
                         {
                             $addToSet: { savedBooks: bookMark },
                         },
@@ -68,10 +68,20 @@ const resolvers = {
             } catch (err) {
                 console.error(err);
             }
-
         },
-        removeBook: async (parent, { bookId, userId }) => {
-
+        removeBook: async (parent, { bookId, userId }, context) => {
+            try {
+                if (context.user) {
+                    return User.findOneAndUpdate(
+                        { _id: userId },
+                        { $pull: { savedBooks: bookId } },
+                        { new: true }
+                    );
+                }
+                throw new AuthenticationError('Could not find user with this id!');
+            } catch (err) {
+                console.error(err);
+            }
         }
     }
 
