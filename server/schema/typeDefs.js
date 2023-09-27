@@ -31,7 +31,7 @@ type Query {
     me: User
 }
 
-input BookInput {
+input bookInput {
     bookId: String
     title: String
     description: String
