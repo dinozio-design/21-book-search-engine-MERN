@@ -14,8 +14,12 @@ const { AuthenticationError } = require('apollo-server-express');
 const resolvers = {
     Query: {
         //get all documents from "me" collection from typeDefs
-        me: async () => {
-            return (await User.find({})).populate('savedBooks');
+        me: async (parent, args, context) => {
+            if (context._id) {
+                const user = await User.findById(context._id);
+                return user
+            }
+            throw new AuthenticationError('Log in first!');
         }
     },
     Mutation: {

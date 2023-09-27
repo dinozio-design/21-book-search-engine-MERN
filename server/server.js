@@ -28,7 +28,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 // -> must deprecare the next line
-app.use(routes);
+// app.use(routes);
 
 // creating new instance of Apollo Server here
 const startApolloServer = async () =>{
@@ -36,7 +36,10 @@ const startApolloServer = async () =>{
   server.applyMiddleware({app});
 
   db.once('open', () => {
-    app.listen(PORT, () => console.log(`🌍 Now listening on localhost:${PORT}`));
+    app.listen(PORT, () => {
+      console.log(`API server running on port ${PORT}!`);
+      console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
+    });
   });
 };
 
