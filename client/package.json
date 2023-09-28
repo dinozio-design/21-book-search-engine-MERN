@@ -13,7 +13,9 @@
     "react-bootstrap": "^2.8.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.16.0",
-    "react-scripts": "^5.0.1"
+    "react-scripts": "^5.0.1",
+    "@apollo/client": "^3.8.4",
+    "graphql": "^16.8.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -37,4 +39,3 @@
     ]
   }
 }
-
