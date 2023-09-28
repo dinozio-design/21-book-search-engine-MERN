@@ -17,7 +17,7 @@ const resolvers = {
         me: async (parent, args, context) => {
             if (context._id) {
                 const user = await User.findById(context._id);
-                return user
+                return user;
             }
             throw new AuthenticationError('Log in first!');
         }

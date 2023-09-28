@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
 
-import { createUser } from '../utils/API';
+// import { createUser } from '../utils/API';
 import Auth from '../utils/auth';
 
 
@@ -13,7 +13,7 @@ import { ADD_USER } from '../utils/mutations';
 
 const SignupForm = () => {
   //useing glq mutaion hooks
-  const [addUser, { error }] = useMutation(ADD_USER);
+  const [addUser] = useMutation(ADD_USER);
 
   // set initial form state
   const [userFormData, setUserFormData] = useState({ username: '', email: '', password: '' });
@@ -44,13 +44,13 @@ const SignupForm = () => {
       const { data } = await addUser({
         variables: {...userFormData}
       });
-
-      if (!response.ok) {
-        throw new Error('something went wrong!');
-      }
+      console.log(data);
+      // if (!response.ok) {
+      //   throw new Error('something went wrong!');
+      // }
 
       // const { token, user } = await response.json();
-      console.log(user);
+      // console.log(user);
       Auth.login(data.addUser.token);
     } catch (err) {
       console.error(err);
