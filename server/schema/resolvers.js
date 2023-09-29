@@ -26,12 +26,13 @@ const resolvers = {
         // create a user, sign a token, and send it back (to client/src/components/SignUpForm.js)
         addUser: async (parent, { username, email, password }) => {
             try {
-                console.log(`gettng ready to create user ${username}, ${email}, ${password}, ${token}`);
+                console.log(`gettng ready to create user ${username}, ${email}, ${password}`);
                 const user = await User.create({ username, email, password });
                 if (!user) {
                     return res.status(400).json({ message: 'Something is wrong!' });
                 }
                 const token = signToken(user);
+                console.log(`this is the token , ${token}`);
                 return { token, user };
             } catch (err) {
                 console.error(err);

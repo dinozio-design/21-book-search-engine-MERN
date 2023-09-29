@@ -1,9 +1,10 @@
 // [TODO: Done!] implement Apollo Server and apply it to the Express server as middleware
 //Importing Apollo Server Express
-const { ApolloServer} = require('apollo-server-express');
-
+const { ApolloServer } = require('apollo-server-express');
 // import gql typeDefs and resolvers
-const {typeDefs, resolvers} = require('./schema')
+const { typeDefs, resolvers } = require('./schema')
+// importing authMiddleware for connecting to gql
+const { authMiddleware } = require('./utils/auth');
 
 const express = require('express');
 const path = require('path');
@@ -13,7 +14,8 @@ const routes = require('./routes');
 // Creating new instance of apollo server class with the configuration
 const server = new ApolloServer({
   typeDefs,
-  resolvers
+  resolvers,
+  context: authMiddleware,
 });
 
 const app = express();
@@ -31,9 +33,9 @@ if (process.env.NODE_ENV === 'production') {
 // app.use(routes);
 
 // creating new instance of Apollo Server here
-const startApolloServer = async () =>{
+const startApolloServer = async () => {
   await server.start();
-  server.applyMiddleware({app});
+  server.applyMiddleware({ app });
 
   db.once('open', () => {
     app.listen(PORT, () => {
