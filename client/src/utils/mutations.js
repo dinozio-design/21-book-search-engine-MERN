@@ -15,9 +15,16 @@ import { gql } from "@apollo/client";
 
 //LOGIN_USER will execute the loginUser mutation set up using Apollo Server
 
-// export const LOGIN_USER = gql`
-
-// `;
+export const LOGIN_USER = gql`
+    mutation loginUser ($email: String!, $password: String!){
+        loginUser(email: $email, password: $password){
+            token
+            user{
+                _id
+            }
+        }
+    }
+`;
 
 //ADD_USER will execute the addUser mutation
 export const ADD_USER = gql`
