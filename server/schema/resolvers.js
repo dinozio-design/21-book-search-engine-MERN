@@ -2,7 +2,7 @@
 // use functionality in the user-controller.js as a guide
 
 // importing user model
-const { User, Book } = require('../models');
+const { User} = require('../models');
 
 // imporing sign token function from auth
 const { signToken } = require('../utils/auth');
