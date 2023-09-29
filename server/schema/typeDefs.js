@@ -4,7 +4,7 @@ const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
 type Auth {
-    _id: ID
+    _id: ID!
     token: String
     user: User
 }

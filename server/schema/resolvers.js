@@ -2,7 +2,7 @@
 // use functionality in the user-controller.js as a guide
 
 // importing user model
-const { User, Book } = require('../models');
+const { User} = require('../models');
 
 // imporing sign token function from auth
 const { signToken } = require('../utils/auth');
@@ -17,7 +17,7 @@ const resolvers = {
         me: async (parent, args, context) => {
             if (context._id) {
                 const user = await User.findById(context._id);
-                return user
+                return user;
             }
             throw new AuthenticationError('Log in first!');
         }
@@ -26,11 +26,13 @@ const resolvers = {
         // create a user, sign a token, and send it back (to client/src/components/SignUpForm.js)
         addUser: async (parent, { username, email, password }) => {
             try {
+                console.log(`gettng ready to create user ${username}, ${email}, ${password}`);
                 const user = await User.create({ username, email, password });
                 if (!user) {
                     return res.status(400).json({ message: 'Something is wrong!' });
                 }
                 const token = signToken(user);
+                console.log(`this is the token , ${token}`);
                 return { token, user };
             } catch (err) {
                 console.error(err);
@@ -45,7 +47,7 @@ const resolvers = {
                 throw new AuthenticationError('No profile with this email found!');
             };
             // verify password
-            const correctPw = await profile.isCorrectPassword(password);
+            const correctPw = await user.isCorrectPassword(password);
             if (!correctPw) {
                 throw new AuthenticationError('Incorrect password!');
             };
