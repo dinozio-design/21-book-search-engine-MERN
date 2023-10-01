@@ -69,6 +69,11 @@ To get the app running, simply head on over to the deployed link on Heroku.
 ## Usage
 This app allows the user to ...
 
+here are the images of the application on local host:
+
+![homepage](./Assets/homepage.jpg)
+![searches](./Assets/booksearch.jpg)
+
 ## License
 This app is covered under MIT license. For details and limitations of this license please visit:
 [License Link for MIT](https://opensource.org/licenses/MIT)
@@ -88,9 +93,8 @@ If you have any questions, you can email them to me.
 
 ### Deployed Links
 
-<!-- 1. You can find the video walkthrough of a typical user flow of the application **here:** <br>
-[13-E-Commerce-Back-End-ORM - vid 1 -  starting and seeding db + Category CRUDs](https://drive.google.com/file/d/1e2YqTp9xwSMpd87m7aM-Vn1WWebHmbXy/view)<br>
-[13-E-Commerce-Back-End-ORM - vid 2 balance of CRUDs for products and tags](https://drive.google.com/file/d/1sNlSMLtALR2E1cHLw3cr7YZUAiKvK0Jh/view)<br> -->
+1. You can find the deployed application on Heroku **here:** <br>
+[Google Book Search](https://intense-headland-35424-320404f76292.herokuapp.com/)<br>
 
 
 2. You can find the URL of my GitHub repository that contains this code **here:** <br>[GitHub Repo - link](https://github.com/dinozio-design/21-book-search-engine-MERN)
