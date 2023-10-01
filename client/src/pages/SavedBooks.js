@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import {
   Container,
   Card,
@@ -7,7 +7,7 @@ import {
   Col
 } from 'react-bootstrap';
 
-import { getMe, deleteBook } from '../utils/API';
+// import { getMe, deleteBook } from '../utils/API';
 import Auth from '../utils/auth';
 import { removeBookId } from '../utils/localStorage';
 
@@ -28,7 +28,7 @@ const SavedBooks = () => {
   const [removeBook] = useMutation(REMOVE_BOOK);
 
   // use this to determine if `useEffect()` hook needs to run again
-  const userDataLength = Object.keys(userData).length;
+  // const userDataLength = Object.keys(userData).length;
 
   //[TODO:] Remove the `useEffect()` Hook that sets the state for `UserData`.
   // Instead, use the `useQuery()` Hook to execute the `GET_ME` query on load and save it to a variable named `userData`.
@@ -90,7 +90,7 @@ const SavedBooks = () => {
   };
 
   // if data isn't here yet, say so
-  if (!userDataLength) {
+  if (loading) {
     return <h2>LOADING...</h2>;
   }
 

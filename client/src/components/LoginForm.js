@@ -42,7 +42,7 @@ const LoginForm = () => {
       const { data } = await loginUser({
         variables: { ...userFormData }
       });
-      // console.log(data);
+      console.log(data);
 
       // if (!response.ok) {
       //   throw new Error('something went wrong!');
@@ -52,6 +52,7 @@ const LoginForm = () => {
       // console.log(user);
       // console.log(token);
       Auth.login(data.login.token);
+      console.log(data.login.token);
     } catch (err) {
       console.error(err);
       setShowAlert(true);
