@@ -11,7 +11,7 @@ import { setContext } from '@apollo/client/link/context';
 //[TODO:] Create an Apollo Provider to make every request work with the Apollo Server
 //making gql link dynamic
 const httpLink = createHttpLink({
-  uri: '/graphql',
+  uri: '/graphql'
 });
 
 const authLink = setContext((_, { headers }) => {
@@ -25,6 +25,7 @@ const authLink = setContext((_, { headers }) => {
     },
   };
 });
+
 
 // setting up apollo client
 const client = new ApolloClient({
